@@ -16,8 +16,10 @@ pipeline {
             when {
                 expression { params.SKIP_EXECUTION == false }
             }
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh "npx cypress run"  
+            step{
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "npx cypress run"  
+                }
             }
         }
         // stage('Post Building Action') {
