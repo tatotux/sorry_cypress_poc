@@ -16,7 +16,7 @@ pipeline {
             when {
                 expression { params.SKIP_EXECUTION == false }
             }
-            step{
+            steps{
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     sh "npx cypress run"  
                 }
